@@ -1,0 +1,1535 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/tediousjs/tedious"
+
+    >tedious (v2.0.0)</a>
+</h1>
+<h4>A TDS driver, for connecting to MS SQLServer databases.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious">module tedious</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.BulkLoad">
+            function <span class="apidocSignatureSpan">tedious.</span>BulkLoad
+            <span class="apidocSignatureSpan">(table, options1, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.Connection">
+            function <span class="apidocSignatureSpan">tedious.</span>Connection
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.ConnectionError">
+            function <span class="apidocSignatureSpan">tedious.</span>ConnectionError
+            <span class="apidocSignatureSpan">(message, code)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.ConnectionError.super_">
+            function <span class="apidocSignatureSpan">tedious.</span>ConnectionError.super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.Request">
+            function <span class="apidocSignatureSpan">tedious.</span>Request
+            <span class="apidocSignatureSpan">(sqlTextOrProcedure, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.RequestError">
+            function <span class="apidocSignatureSpan">tedious.</span>RequestError
+            <span class="apidocSignatureSpan">(message, code)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.metadata_parser">
+            function <span class="apidocSignatureSpan">tedious.</span>metadata_parser
+            <span class="apidocSignatureSpan">(parser, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>ISOLATION_LEVEL</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>TDS_VERSION</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>TYPES</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>all_headers</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>connector</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>errors</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>guid_parser</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>instance_lookup</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>library</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>packet</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>sender</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>transaction</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.ConnectionError">module tedious.ConnectionError</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.ConnectionError.ConnectionError">
+            function <span class="apidocSignatureSpan">tedious.</span>ConnectionError
+            <span class="apidocSignatureSpan">(message, code)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.ConnectionError.super_">
+            function <span class="apidocSignatureSpan">tedious.ConnectionError.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.ConnectionError.super_">module tedious.ConnectionError.super_</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.ConnectionError.super_.super_">
+            function <span class="apidocSignatureSpan">tedious.ConnectionError.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.ConnectionError.super_.captureStackTrace">
+            function <span class="apidocSignatureSpan">tedious.ConnectionError.super_.</span>captureStackTrace
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">tedious.ConnectionError.super_.</span>stackTraceLimit</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.RequestError">module tedious.RequestError</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.RequestError.RequestError">
+            function <span class="apidocSignatureSpan">tedious.</span>RequestError
+            <span class="apidocSignatureSpan">(message, code)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.RequestError.super_">
+            function <span class="apidocSignatureSpan">tedious.RequestError.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.all_headers">module tedious.all_headers</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.all_headers.writeToTrackingBuffer">
+            function <span class="apidocSignatureSpan">tedious.all_headers.</span>writeToTrackingBuffer
+            <span class="apidocSignatureSpan">(buffer, txnDescriptor, outstandingRequestCount)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.connector">module tedious.connector</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.connector.Connector">
+            function <span class="apidocSignatureSpan">tedious.connector.</span>Connector
+            <span class="apidocSignatureSpan">(options, multiSubnetFailover)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.connector.ParallelConnectionStrategy">
+            function <span class="apidocSignatureSpan">tedious.connector.</span>ParallelConnectionStrategy
+            <span class="apidocSignatureSpan">(addresses, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.connector.SequentialConnectionStrategy">
+            function <span class="apidocSignatureSpan">tedious.connector.</span>SequentialConnectionStrategy
+            <span class="apidocSignatureSpan">(addresses, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.errors">module tedious.errors</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.errors.ConnectionError">
+            function <span class="apidocSignatureSpan">tedious.errors.</span>ConnectionError
+            <span class="apidocSignatureSpan">(message, code)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.errors.RequestError">
+            function <span class="apidocSignatureSpan">tedious.errors.</span>RequestError
+            <span class="apidocSignatureSpan">(message, code)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.guid_parser">module tedious.guid_parser</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.guid_parser.arrayToGuid">
+            function <span class="apidocSignatureSpan">tedious.guid_parser.</span>arrayToGuid
+            <span class="apidocSignatureSpan">(array)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.guid_parser.guidToArray">
+            function <span class="apidocSignatureSpan">tedious.guid_parser.</span>guidToArray
+            <span class="apidocSignatureSpan">(guid)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.instance_lookup">module tedious.instance_lookup</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.instance_lookup.InstanceLookup">
+            function <span class="apidocSignatureSpan">tedious.instance_lookup.</span>InstanceLookup
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.metadata_parser">module tedious.metadata_parser</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.metadata_parser.metadata_parser">
+            function <span class="apidocSignatureSpan">tedious.</span>metadata_parser
+            <span class="apidocSignatureSpan">(parser, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.metadata_parser.readCollation">
+            function <span class="apidocSignatureSpan">tedious.metadata_parser.</span>readCollation
+            <span class="apidocSignatureSpan">(parser, type, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.metadata_parser.readPrecision">
+            function <span class="apidocSignatureSpan">tedious.metadata_parser.</span>readPrecision
+            <span class="apidocSignatureSpan">(parser, type, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.metadata_parser.readScale">
+            function <span class="apidocSignatureSpan">tedious.metadata_parser.</span>readScale
+            <span class="apidocSignatureSpan">(parser, type, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.packet">module tedious.packet</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.packet.Packet">
+            function <span class="apidocSignatureSpan">tedious.packet.</span>Packet
+            <span class="apidocSignatureSpan">(typeOrBuffer)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.packet.isPacketComplete">
+            function <span class="apidocSignatureSpan">tedious.packet.</span>isPacketComplete
+            <span class="apidocSignatureSpan">(potentialPacketBuffer)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.packet.packetLength">
+            function <span class="apidocSignatureSpan">tedious.packet.</span>packetLength
+            <span class="apidocSignatureSpan">(potentialPacketBuffer)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">tedious.packet.</span>HEADER_LENGTH</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.packet.</span>OFFSET</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.packet.</span>TYPE</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.sender">module tedious.sender</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.sender.ParallelSendStrategy">
+            function <span class="apidocSignatureSpan">tedious.sender.</span>ParallelSendStrategy
+            <span class="apidocSignatureSpan">(addresses, port, request)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.sender.Sender">
+            function <span class="apidocSignatureSpan">tedious.sender.</span>Sender
+            <span class="apidocSignatureSpan">(host, port, request)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.transaction">module tedious.transaction</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.transaction.Transaction">
+            function <span class="apidocSignatureSpan">tedious.transaction.</span>Transaction
+            <span class="apidocSignatureSpan">(name, isolationLevel)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.transaction.</span>ISOLATION_LEVEL</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.transaction.</span>OPERATION_TYPE</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious" id="apidoc.module.tedious">module tedious</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.BulkLoad" id="apidoc.element.tedious.BulkLoad">
+        function <span class="apidocSignatureSpan">tedious.</span>BulkLoad
+        <span class="apidocSignatureSpan">(table, options1, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function BulkLoad(table, options1, callback) {
+  (0, _classCallCheck3.default)(this, BulkLoad);
+
+  var _this = (0, _possibleConstructorReturn3.default)(this, (BulkLoad.__proto__ || (0, _getPrototypeOf2.default)(BulkLoad)).call
+(this));
+
+  _this.error = undefined;
+  _this.canceled = false;
+
+  _this.table = table;
+  _this.options = options1;
+  _this.callback = callback;
+  _this.columns = [];
+  _this.columnsByName = {};
+  _this.rowsData = new WritableTrackingBuffer(1024, &#x27;ucs2&#x27;, true);
+  _this.firstRowWritten = false;
+  return _this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.Connection" id="apidoc.element.tedious.Connection">
+        function <span class="apidocSignatureSpan">tedious.</span>Connection
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Connection(config) {
+  (0, _classCallCheck3.default)(this, Connection);
+
+  var _this = (0, _possibleConstructorReturn3.default)(this, (Connection.__proto__ || (0, _getPrototypeOf2.default)(Connection)).
+call(this));
+
+  if (!config) {
+    throw new TypeError(&#x27;No connection configuration given&#x27;);
+  }
+
+  if (typeof config.server !== &#x27;string&#x27;) {
+    throw new TypeError(&#x27;Invalid server: &#x27; + config.server);
+  }
+
+  _this.config = {
+    server: config.server,
+    userName: config.userName,
+    password: config.password,
+    domain: config.domain &#x26;&#x26; config.domain.toUpperCase(),
+    options: {
+      abortTransactionOnError: false,
+      appName: undefined,
+      camelCaseColumns: false,
+      cancelTimeout: DEFAULT_CANCEL_TIMEOUT,
+      columnNameReplacer: undefined,
+      connectTimeout: DEFAULT_CONNECT_TIMEOUT,
+      connectionIsolationLevel: ISOLATION_LEVEL.READ_COMMITTED,
+      cryptoCredentialsDetails: {},
+      database: undefined,
+      datefirst: DEFAULT_DATEFIRST,
+      debug: {
+        data: false,
+        packet: false,
+        payload: false,
+        token: false
+      },
+      enableArithAbort: false,
+      enableAnsiNullDefault: true,
+      encrypt: false,
+      fallbackToDefaultDb: false,
+      instanceName: undefined,
+      isolationLevel: ISOLATION_LEVEL.READ_COMMITTED,
+      localAddress: undefined,
+      multiSubnetFailover: false,
+      packetSize: DEFAULT_PACKET_SIZE,
+      port: DEFAULT_PORT,
+      readOnlyIntent: false,
+      requestTimeout: DEFAULT_CLIENT_REQUEST_TIMEOUT,
+      rowCollectionOnDone: false,
+      rowCollectionOnRequestCompletion: false,
+      tdsVersion: DEFAULT_TDS_VERSION,
+      textsize: DEFAULT_TEXTSIZE,
+      trustServerCertificate: true,
+      useColumnNames: false,
+      useUTC: true
+    }
+  };
+
+  if (config.options) {
+    if (config.options.port &#x26;&#x26; config.options.instanceName) {
+      throw new Error(&#x27;Port and instanceName are mutually exclusive, but &#x27; + config.options.port + &#x27; and &#x27; + config.options.instanceName
+ + &#x27; provided&#x27;);
+    }
+
+    if (config.options.abortTransactionOnError != undefined) {
+      _this.config.options.abortTransactionOnError = config.options.abortTransactionOnError;
+    }
+
+    if (config.options.appName != undefined) {
+      _this.config.options.appName = config.options.appName;
+    }
+
+    if (config.options.camelCaseColumns != undefined) {
+      _this.config.options.camelCaseColumns = config.options.camelCaseColumns;
+    }
+
+    if (config.options.cancelTimeout != undefined) {
+      _this.config.options.cancelTimeout = config.options.cancelTimeout;
+    }
+
+    if (config.options.columnNameReplacer) {
+      if (typeof config.options.columnNameReplacer !== &#x27;function&#x27;) {
+        throw new TypeError(&#x27;options.columnNameReplacer must be a function or null.&#x27;);
+      }
+
+      _this.config.options.columnNameReplacer = config.options.columnNameReplacer;
+    }
+
+    if (config.options.connectTimeout) {
+      _this.config.options.connectTimeout = config.options.connectTimeout;
+    }
+
+    if (config.options.connectionIsolationLevel) {
+      _this.config.options.connectionIsolationLevel = config.options.connectionIsolationLevel;
+    }
+
+    if (config.options.cryptoCredentialsDetails) {
+      _this.config.options.cryptoCredentialsDetails = config.options.cryptoCredentialsDetails;
+    }
+
+    if (config.options.database != undefined) {
+      _this.config.options.database = config.options.database;
+    }
+
+    if (config.options.datefirst) {
+      if (config.options.datefirst &#x3c; 1 || config.options.datefirst &#x3e; 7) {
+        throw new RangeError(&#x27;DateFirst should be &#x3e;= 1 and &#x3c;= 7&#x27;);
+      }
+
+      _this.config.options.datefirst = config.options.datefirst;
+    }
+
+    if (config.options.debug) {
+      if (config.options.debug.data != undefined) {
+        _this.config.options.debug.data = config.options.debug.data;
+      }
+      if (config.options.debug.packet != undefined) {
+        _this.config.options.debug.packet = config.options.debug.packet;
+      }
+      if (config.options.debug.payload != undefined) {
+        _this.config.options.debug.payload = config.options.debug.payl ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.ConnectionError" id="apidoc.element.tedious.ConnectionError">
+        function <span class="apidocSignatureSpan">tedious.</span>ConnectionError
+        <span class="apidocSignatureSpan">(message, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ConnectionError(message, code) {
+  if (!(this instanceof ConnectionError)) {
+    if (message instanceof ConnectionError) {
+      return message;
+    }
+
+    return new ConnectionError(message, code);
+  }
+
+  Error.call(this);
+
+  this.message = message;
+  this.code = code;
+
+  Error.captureStackTrace(this, this.constructor);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.ConnectionError.super_" id="apidoc.element.tedious.ConnectionError.super_">
+        function <span class="apidocSignatureSpan">tedious.</span>ConnectionError.super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Error() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.Request" id="apidoc.element.tedious.Request">
+        function <span class="apidocSignatureSpan">tedious.</span>Request
+        <span class="apidocSignatureSpan">(sqlTextOrProcedure, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Request(sqlTextOrProcedure, callback) {
+  (0, _classCallCheck3.default)(this, Request);
+
+  var _this = (0, _possibleConstructorReturn3.default)(this, (Request.__proto__ || (0, _getPrototypeOf2.default)(Request)).call(
+this));
+
+  _this.sqlTextOrProcedure = sqlTextOrProcedure;
+  _this.callback = callback;
+  _this.parameters = [];
+  _this.parametersByName = {};
+  _this.userCallback = _this.callback;
+  _this.callback = function () {
+    if (this.preparing) {
+      this.emit(&#x27;prepared&#x27;);
+      return this.preparing = false;
+    } else {
+      this.userCallback.apply(this, arguments);
+      return this.emit(&#x27;requestCompleted&#x27;);
+    }
+  };
+  return _this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.RequestError" id="apidoc.element.tedious.RequestError">
+        function <span class="apidocSignatureSpan">tedious.</span>RequestError
+        <span class="apidocSignatureSpan">(message, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function RequestError(message, code) {
+  if (!(this instanceof RequestError)) {
+    if (message instanceof RequestError) {
+      return message;
+    }
+
+    return new RequestError(message, code);
+  }
+
+  Error.call(this);
+
+  this.message = message;
+  this.code = code;
+
+  Error.captureStackTrace(this, this.constructor);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.metadata_parser" id="apidoc.element.tedious.metadata_parser">
+        function <span class="apidocSignatureSpan">tedious.</span>metadata_parser
+        <span class="apidocSignatureSpan">(parser, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function metadataParse(parser, options, callback) {
+  (options.tdsVersion &#x3c; &#x27;7_2&#x27; ? parser.readUInt16LE : parser.readUInt32LE).call(parser, function (userType) {
+    parser.readUInt16LE(function (flags) {
+      parser.readUInt8(function (typeNumber) {
+        var type = TYPE[typeNumber];
+
+        if (!type) {
+          return parser.emit(new Error(sprintf(&#x27;Unrecognised data type 0x%02X&#x27;, typeNumber)));
+        }
+
+        readDataLength(parser, type, function (dataLength) {
+          readPrecision(parser, type, function (precision) {
+            readScale(parser, type, function (scale) {
+              if (scale &#x26;&#x26; type.dataLengthFromScale) {
+                dataLength = type.dataLengthFromScale(scale);
+              }
+
+              readCollation(parser, type, function (collation) {
+                readSchema(parser, type, function (schema) {
+                  readUDTInfo(parser, type, function (udtInfo) {
+                    callback({
+                      userType: userType,
+                      flags: flags,
+                      type: type,
+                      collation: collation,
+                      precision: precision,
+                      scale: scale,
+                      dataLength: dataLength,
+                      schema: schema,
+                      udtInfo: udtInfo
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.ConnectionError" id="apidoc.module.tedious.ConnectionError">module tedious.ConnectionError</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.ConnectionError.ConnectionError" id="apidoc.element.tedious.ConnectionError.ConnectionError">
+        function <span class="apidocSignatureSpan">tedious.</span>ConnectionError
+        <span class="apidocSignatureSpan">(message, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ConnectionError(message, code) {
+  if (!(this instanceof ConnectionError)) {
+    if (message instanceof ConnectionError) {
+      return message;
+    }
+
+    return new ConnectionError(message, code);
+  }
+
+  Error.call(this);
+
+  this.message = message;
+  this.code = code;
+
+  Error.captureStackTrace(this, this.constructor);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.ConnectionError.super_" id="apidoc.element.tedious.ConnectionError.super_">
+        function <span class="apidocSignatureSpan">tedious.ConnectionError.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Error() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.ConnectionError.super_" id="apidoc.module.tedious.ConnectionError.super_">module tedious.ConnectionError.super_</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.ConnectionError.super_.super_" id="apidoc.element.tedious.ConnectionError.super_.super_">
+        function <span class="apidocSignatureSpan">tedious.ConnectionError.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Error() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.ConnectionError.super_.captureStackTrace" id="apidoc.element.tedious.ConnectionError.super_.captureStackTrace">
+        function <span class="apidocSignatureSpan">tedious.ConnectionError.super_.</span>captureStackTrace
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function captureStackTrace() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+
+  Error.call(this);
+
+  this.message = message;
+  this.code = code;
+
+  Error.<span class="apidocCodeKeywordSpan">captureStackTrace</span>(this, this.constructor);
+}
+
+util.inherits(ConnectionError, Error);
+
+ConnectionError.prototype.name = &#x27;ConnectionError&#x27;;
+
+module.exports.RequestError = RequestError;
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.RequestError" id="apidoc.module.tedious.RequestError">module tedious.RequestError</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.RequestError.RequestError" id="apidoc.element.tedious.RequestError.RequestError">
+        function <span class="apidocSignatureSpan">tedious.</span>RequestError
+        <span class="apidocSignatureSpan">(message, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function RequestError(message, code) {
+  if (!(this instanceof RequestError)) {
+    if (message instanceof RequestError) {
+      return message;
+    }
+
+    return new RequestError(message, code);
+  }
+
+  Error.call(this);
+
+  this.message = message;
+  this.code = code;
+
+  Error.captureStackTrace(this, this.constructor);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.RequestError.super_" id="apidoc.element.tedious.RequestError.super_">
+        function <span class="apidocSignatureSpan">tedious.RequestError.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Error() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.all_headers" id="apidoc.module.tedious.all_headers">module tedious.all_headers</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.all_headers.writeToTrackingBuffer" id="apidoc.element.tedious.all_headers.writeToTrackingBuffer">
+        function <span class="apidocSignatureSpan">tedious.all_headers.</span>writeToTrackingBuffer
+        <span class="apidocSignatureSpan">(buffer, txnDescriptor, outstandingRequestCount)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function writeToTrackingBuffer(buffer, txnDescriptor, outstandingRequestCount) {
+  buffer.writeUInt32LE(0);
+  buffer.writeUInt32LE(TXNDESCRIPTOR_HEADER_LEN);
+  buffer.writeUInt16LE(TYPE.TXN_DESCRIPTOR);
+  buffer.writeBuffer(txnDescriptor);
+  buffer.writeUInt32LE(outstandingRequestCount);
+
+  var data = buffer.data;
+  data.writeUInt32LE(data.length, 0);
+  return buffer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.connector" id="apidoc.module.tedious.connector">module tedious.connector</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.connector.Connector" id="apidoc.element.tedious.connector.Connector">
+        function <span class="apidocSignatureSpan">tedious.connector.</span>Connector
+        <span class="apidocSignatureSpan">(options, multiSubnetFailover)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Connector(options, multiSubnetFailover) {
+  (0, _classCallCheck3.default)(this, Connector);
+
+  this.options = options;
+  this.multiSubnetFailover = multiSubnetFailover;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.connector.ParallelConnectionStrategy" id="apidoc.element.tedious.connector.ParallelConnectionStrategy">
+        function <span class="apidocSignatureSpan">tedious.connector.</span>ParallelConnectionStrategy
+        <span class="apidocSignatureSpan">(addresses, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ParallelConnectionStrategy(addresses, options) {
+  (0, _classCallCheck3.default)(this, ParallelConnectionStrategy);
+
+  this.addresses = addresses;
+  this.options = options;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.connector.SequentialConnectionStrategy" id="apidoc.element.tedious.connector.SequentialConnectionStrategy">
+        function <span class="apidocSignatureSpan">tedious.connector.</span>SequentialConnectionStrategy
+        <span class="apidocSignatureSpan">(addresses, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SequentialConnectionStrategy(addresses, options) {
+  (0, _classCallCheck3.default)(this, SequentialConnectionStrategy);
+
+  this.addresses = addresses;
+  this.options = options;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.errors" id="apidoc.module.tedious.errors">module tedious.errors</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.errors.ConnectionError" id="apidoc.element.tedious.errors.ConnectionError">
+        function <span class="apidocSignatureSpan">tedious.errors.</span>ConnectionError
+        <span class="apidocSignatureSpan">(message, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ConnectionError(message, code) {
+  if (!(this instanceof ConnectionError)) {
+    if (message instanceof ConnectionError) {
+      return message;
+    }
+
+    return new ConnectionError(message, code);
+  }
+
+  Error.call(this);
+
+  this.message = message;
+  this.code = code;
+
+  Error.captureStackTrace(this, this.constructor);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.errors.RequestError" id="apidoc.element.tedious.errors.RequestError">
+        function <span class="apidocSignatureSpan">tedious.errors.</span>RequestError
+        <span class="apidocSignatureSpan">(message, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function RequestError(message, code) {
+  if (!(this instanceof RequestError)) {
+    if (message instanceof RequestError) {
+      return message;
+    }
+
+    return new RequestError(message, code);
+  }
+
+  Error.call(this);
+
+  this.message = message;
+  this.code = code;
+
+  Error.captureStackTrace(this, this.constructor);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.guid_parser" id="apidoc.module.tedious.guid_parser">module tedious.guid_parser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.guid_parser.arrayToGuid" id="apidoc.element.tedious.guid_parser.arrayToGuid">
+        function <span class="apidocSignatureSpan">tedious.guid_parser.</span>arrayToGuid
+        <span class="apidocSignatureSpan">(array)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function arrayToGuid(array) {
+  return MAP[array[3]] + MAP[array[2]] + MAP[array[1]] + MAP[array[0]] + &#x27;-&#x27; + MAP[array[5]] + MAP[array[4]] + &#x27;-&#x27; + MAP[array[7
+]] + MAP[array[6]] + &#x27;-&#x27; + MAP[array[8]] + MAP[array[9]] + &#x27;-&#x27; + MAP[array[10]] + MAP[array[11]] + MAP[array[12]] + MAP[array[13
+]] + MAP[array[14]] + MAP[array[15]];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+case &#x27;UniqueIdentifierN&#x27;:
+  switch (dataLength) {
+    case 0:
+      return callback(null);
+    case 0x10:
+      return parser.readBuffer(0x10, function (data) {
+        callback(guidParser.<span class="apidocCodeKeywordSpan">arrayToGuid</span>(data));
+      });
+
+    default:
+      return parser.emit(&#x27;error&#x27;, new Error(sprintf(&#x27;Unsupported guid size %d&#x27;, dataLength - 1)));
+  }
+
+case &#x27;UDT&#x27;:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.guid_parser.guidToArray" id="apidoc.element.tedious.guid_parser.guidToArray">
+        function <span class="apidocSignatureSpan">tedious.guid_parser.</span>guidToArray
+        <span class="apidocSignatureSpan">(guid)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function guidToArray(guid) {
+  return [CHARCODEMAP[guid.charCodeAt(6)][guid.charCodeAt(7)], CHARCODEMAP[guid.charCodeAt(4)][guid.charCodeAt(5)], CHARCODEMAP[
+guid.charCodeAt(2)][guid.charCodeAt(3)], CHARCODEMAP[guid.charCodeAt(0)][guid.charCodeAt(1)], CHARCODEMAP[guid.charCodeAt(11)][guid
+.charCodeAt(12)], CHARCODEMAP[guid.charCodeAt(9)][guid.charCodeAt(10)], CHARCODEMAP[guid.charCodeAt(16)][guid.charCodeAt(17)], CHARCODEMAP
+[guid.charCodeAt(14)][guid.charCodeAt(15)], CHARCODEMAP[guid.charCodeAt(19)][guid.charCodeAt(20)], CHARCODEMAP[guid.charCodeAt(21
+)][guid.charCodeAt(22)], CHARCODEMAP[guid.charCodeAt(24)][guid.charCodeAt(25)], CHARCODEMAP[guid.charCodeAt(26)][guid.charCodeAt
+(27)], CHARCODEMAP[guid.charCodeAt(28)][guid.charCodeAt(29)], CHARCODEMAP[guid.charCodeAt(30)][guid.charCodeAt(31)], CHARCODEMAP
+[guid.charCodeAt(32)][guid.charCodeAt(33)], CHARCODEMAP[guid.charCodeAt(34)][guid.charCodeAt(35)]];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  buffer.writeUInt8(typeByName.UniqueIdentifierN.id);
+  return buffer.writeUInt8(0x10);
+},
+
+writeParameterData: function writeParameterData(buffer, parameter) {
+  if (parameter.value != null) {
+    buffer.writeUInt8(0x10);
+    return buffer.writeBuffer(new Buffer(guidParser.<span class="apidocCodeKeywordSpan">guidToArray</span>(parameter.value)));
+  } else {
+    return buffer.writeUInt8(0);
+  }
+},
+
+validate: function validate(value) {
+  if (value == null) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.instance_lookup" id="apidoc.module.tedious.instance_lookup">module tedious.instance_lookup</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.instance_lookup.InstanceLookup" id="apidoc.element.tedious.instance_lookup.InstanceLookup">
+        function <span class="apidocSignatureSpan">tedious.instance_lookup.</span>InstanceLookup
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function InstanceLookup() {
+  (0, _classCallCheck3.default)(this, InstanceLookup);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.metadata_parser" id="apidoc.module.tedious.metadata_parser">module tedious.metadata_parser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.metadata_parser.metadata_parser" id="apidoc.element.tedious.metadata_parser.metadata_parser">
+        function <span class="apidocSignatureSpan">tedious.</span>metadata_parser
+        <span class="apidocSignatureSpan">(parser, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function metadataParse(parser, options, callback) {
+  (options.tdsVersion &#x3c; &#x27;7_2&#x27; ? parser.readUInt16LE : parser.readUInt32LE).call(parser, function (userType) {
+    parser.readUInt16LE(function (flags) {
+      parser.readUInt8(function (typeNumber) {
+        var type = TYPE[typeNumber];
+
+        if (!type) {
+          return parser.emit(new Error(sprintf(&#x27;Unrecognised data type 0x%02X&#x27;, typeNumber)));
+        }
+
+        readDataLength(parser, type, function (dataLength) {
+          readPrecision(parser, type, function (precision) {
+            readScale(parser, type, function (scale) {
+              if (scale &#x26;&#x26; type.dataLengthFromScale) {
+                dataLength = type.dataLengthFromScale(scale);
+              }
+
+              readCollation(parser, type, function (collation) {
+                readSchema(parser, type, function (schema) {
+                  readUDTInfo(parser, type, function (udtInfo) {
+                    callback({
+                      userType: userType,
+                      flags: flags,
+                      type: type,
+                      collation: collation,
+                      precision: precision,
+                      scale: scale,
+                      dataLength: dataLength,
+                      schema: schema,
+                      udtInfo: udtInfo
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.metadata_parser.readCollation" id="apidoc.element.tedious.metadata_parser.readCollation">
+        function <span class="apidocSignatureSpan">tedious.metadata_parser.</span>readCollation
+        <span class="apidocSignatureSpan">(parser, type, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readCollation(parser, type, callback) {
+  if (type.hasCollation) {
+    // s2.2.5.1.2
+    parser.readBuffer(5, function (collationData) {
+      var collation = {};
+
+      collation.lcid = (collationData[2] &#x26; 0x0F) &#x3c;&#x3c; 16;
+      collation.lcid |= collationData[1] &#x3c;&#x3c; 8;
+      collation.lcid |= collationData[0];
+
+      // This may not be extracting the correct nibbles in the correct order.
+      collation.flags = collationData[3] &#x3e;&#x3e; 4;
+      collation.flags |= collationData[2] &#x26; 0xF0;
+
+      // This may not be extracting the correct nibble.
+      collation.version = collationData[3] &#x26; 0x0F;
+
+      collation.sortId = collationData[4];
+
+      collation.codepage = codepageBySortId[collation.sortId] || codepageByLcid[collation.lcid] || &#x27;CP1252&#x27;;
+
+      callback(collation);
+    });
+  } else {
+    callback(undefined);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.metadata_parser.readPrecision" id="apidoc.element.tedious.metadata_parser.readPrecision">
+        function <span class="apidocSignatureSpan">tedious.metadata_parser.</span>readPrecision
+        <span class="apidocSignatureSpan">(parser, type, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readPrecision(parser, type, callback) {
+  if (type.hasPrecision) {
+    parser.readUInt8(callback);
+  } else {
+    callback(undefined);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.metadata_parser.readScale" id="apidoc.element.tedious.metadata_parser.readScale">
+        function <span class="apidocSignatureSpan">tedious.metadata_parser.</span>readScale
+        <span class="apidocSignatureSpan">(parser, type, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readScale(parser, type, callback) {
+  if (type.hasScale) {
+    parser.readUInt8(callback);
+  } else {
+    callback(undefined);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.packet" id="apidoc.module.tedious.packet">module tedious.packet</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.packet.Packet" id="apidoc.element.tedious.packet.Packet">
+        function <span class="apidocSignatureSpan">tedious.packet.</span>Packet
+        <span class="apidocSignatureSpan">(typeOrBuffer)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Packet(typeOrBuffer) {
+  (0, _classCallCheck3.default)(this, Packet);
+
+  if (typeOrBuffer instanceof Buffer) {
+    this.buffer = typeOrBuffer;
+  } else {
+    var type = typeOrBuffer;
+    this.buffer = new Buffer(HEADER_LENGTH);
+    this.buffer.writeUInt8(type, OFFSET.Type);
+    this.buffer.writeUInt8(STATUS.NORMAL, OFFSET.Status);
+    this.buffer.writeUInt16BE(DEFAULT_SPID, OFFSET.SPID);
+    this.buffer.writeUInt8(DEFAULT_PACKETID, OFFSET.PacketID);
+    this.buffer.writeUInt8(DEFAULT_WINDOW, OFFSET.Window);
+    this.setLength();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.packet.isPacketComplete" id="apidoc.element.tedious.packet.isPacketComplete">
+        function <span class="apidocSignatureSpan">tedious.packet.</span>isPacketComplete
+        <span class="apidocSignatureSpan">(potentialPacketBuffer)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isPacketComplete(potentialPacketBuffer) {
+  if (potentialPacketBuffer.length &#x3c; HEADER_LENGTH) {
+    return false;
+  } else {
+    return potentialPacketBuffer.length &#x3e;= potentialPacketBuffer.readUInt16BE(OFFSET.Length);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.packet.packetLength" id="apidoc.element.tedious.packet.packetLength">
+        function <span class="apidocSignatureSpan">tedious.packet.</span>packetLength
+        <span class="apidocSignatureSpan">(potentialPacketBuffer)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function packetLength(potentialPacketBuffer) {
+  return potentialPacketBuffer.readUInt16BE(OFFSET.Length);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.sender" id="apidoc.module.tedious.sender">module tedious.sender</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.sender.ParallelSendStrategy" id="apidoc.element.tedious.sender.ParallelSendStrategy">
+        function <span class="apidocSignatureSpan">tedious.sender.</span>ParallelSendStrategy
+        <span class="apidocSignatureSpan">(addresses, port, request)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ParallelSendStrategy(addresses, port, request) {
+  (0, _classCallCheck3.default)(this, ParallelSendStrategy);
+
+  this.addresses = addresses;
+  this.port = port;
+  this.request = request;
+
+  this.socketV4 = null;
+  this.socketV6 = null;
+  this.onError = null;
+  this.onMessage = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.sender.Sender" id="apidoc.element.tedious.sender.Sender">
+        function <span class="apidocSignatureSpan">tedious.sender.</span>Sender
+        <span class="apidocSignatureSpan">(host, port, request)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Sender(host, port, request) {
+  (0, _classCallCheck3.default)(this, Sender);
+
+  this.host = host;
+  this.port = port;
+  this.request = request;
+
+  this.parallelSendStrategy = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.transaction" id="apidoc.module.tedious.transaction">module tedious.transaction</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.transaction.Transaction" id="apidoc.element.tedious.transaction.Transaction">
+        function <span class="apidocSignatureSpan">tedious.transaction.</span>Transaction
+        <span class="apidocSignatureSpan">(name, isolationLevel)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Transaction(name, isolationLevel) {
+  (0, _classCallCheck3.default)(this, Transaction);
+
+  this.name = name;
+  this.isolationLevel = isolationLevel;
+  this.outstandingRequestCount = 1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>

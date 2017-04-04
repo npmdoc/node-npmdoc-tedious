@@ -3,7 +3,7 @@
 
 [![NPM](https://nodei.co/npm/tedious.png?downloads=true)](https://www.npmjs.com/package/tedious)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-tedious/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-tedious_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-tedious/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-tedious/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-tedious_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-tedious/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-tedious/build/screenCapture.npmPackageListing.svg)
 

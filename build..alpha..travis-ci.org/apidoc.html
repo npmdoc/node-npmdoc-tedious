@@ -126,6 +126,12 @@
 
         <li>
 
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan"></span>tedious</span>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.</span>ISOLATION_LEVEL</span>
 
         </li>
@@ -482,6 +488,79 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.tedious.tedious">module tedious.tedious</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.tedious.BulkLoad">
+            function <span class="apidocSignatureSpan">tedious.tedious.</span>BulkLoad
+            <span class="apidocSignatureSpan">(table, options1, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.tedious.Connection">
+            function <span class="apidocSignatureSpan">tedious.tedious.</span>Connection
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.tedious.ConnectionError">
+            function <span class="apidocSignatureSpan">tedious.tedious.</span>ConnectionError
+            <span class="apidocSignatureSpan">(message, code)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.tedious.Request">
+            function <span class="apidocSignatureSpan">tedious.tedious.</span>Request
+            <span class="apidocSignatureSpan">(sqlTextOrProcedure, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tedious.tedious.RequestError">
+            function <span class="apidocSignatureSpan">tedious.tedious.</span>RequestError
+            <span class="apidocSignatureSpan">(message, code)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.tedious.</span>ISOLATION_LEVEL</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.tedious.</span>TDS_VERSION</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.tedious.</span>TYPES</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tedious.tedious.</span>library</span>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.tedious.transaction">module tedious.transaction</a><ol>
 
         <li>
@@ -829,6 +908,8 @@ this));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
+
+
 
 
 
@@ -1495,6 +1576,272 @@ validate: function validate(value) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tedious.tedious" id="apidoc.module.tedious.tedious">module tedious.tedious</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.tedious.BulkLoad" id="apidoc.element.tedious.tedious.BulkLoad">
+        function <span class="apidocSignatureSpan">tedious.tedious.</span>BulkLoad
+        <span class="apidocSignatureSpan">(table, options1, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function BulkLoad(table, options1, callback) {
+  (0, _classCallCheck3.default)(this, BulkLoad);
+
+  var _this = (0, _possibleConstructorReturn3.default)(this, (BulkLoad.__proto__ || (0, _getPrototypeOf2.default)(BulkLoad)).call
+(this));
+
+  _this.error = undefined;
+  _this.canceled = false;
+
+  _this.table = table;
+  _this.options = options1;
+  _this.callback = callback;
+  _this.columns = [];
+  _this.columnsByName = {};
+  _this.rowsData = new WritableTrackingBuffer(1024, &#x27;ucs2&#x27;, true);
+  _this.firstRowWritten = false;
+  return _this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.tedious.Connection" id="apidoc.element.tedious.tedious.Connection">
+        function <span class="apidocSignatureSpan">tedious.tedious.</span>Connection
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Connection(config) {
+  (0, _classCallCheck3.default)(this, Connection);
+
+  var _this = (0, _possibleConstructorReturn3.default)(this, (Connection.__proto__ || (0, _getPrototypeOf2.default)(Connection)).
+call(this));
+
+  if (!config) {
+    throw new TypeError(&#x27;No connection configuration given&#x27;);
+  }
+
+  if (typeof config.server !== &#x27;string&#x27;) {
+    throw new TypeError(&#x27;Invalid server: &#x27; + config.server);
+  }
+
+  _this.config = {
+    server: config.server,
+    userName: config.userName,
+    password: config.password,
+    domain: config.domain &#x26;&#x26; config.domain.toUpperCase(),
+    options: {
+      abortTransactionOnError: false,
+      appName: undefined,
+      camelCaseColumns: false,
+      cancelTimeout: DEFAULT_CANCEL_TIMEOUT,
+      columnNameReplacer: undefined,
+      connectTimeout: DEFAULT_CONNECT_TIMEOUT,
+      connectionIsolationLevel: ISOLATION_LEVEL.READ_COMMITTED,
+      cryptoCredentialsDetails: {},
+      database: undefined,
+      datefirst: DEFAULT_DATEFIRST,
+      debug: {
+        data: false,
+        packet: false,
+        payload: false,
+        token: false
+      },
+      enableArithAbort: false,
+      enableAnsiNullDefault: true,
+      encrypt: false,
+      fallbackToDefaultDb: false,
+      instanceName: undefined,
+      isolationLevel: ISOLATION_LEVEL.READ_COMMITTED,
+      localAddress: undefined,
+      multiSubnetFailover: false,
+      packetSize: DEFAULT_PACKET_SIZE,
+      port: DEFAULT_PORT,
+      readOnlyIntent: false,
+      requestTimeout: DEFAULT_CLIENT_REQUEST_TIMEOUT,
+      rowCollectionOnDone: false,
+      rowCollectionOnRequestCompletion: false,
+      tdsVersion: DEFAULT_TDS_VERSION,
+      textsize: DEFAULT_TEXTSIZE,
+      trustServerCertificate: true,
+      useColumnNames: false,
+      useUTC: true
+    }
+  };
+
+  if (config.options) {
+    if (config.options.port &#x26;&#x26; config.options.instanceName) {
+      throw new Error(&#x27;Port and instanceName are mutually exclusive, but &#x27; + config.options.port + &#x27; and &#x27; + config.options.instanceName
+ + &#x27; provided&#x27;);
+    }
+
+    if (config.options.abortTransactionOnError != undefined) {
+      _this.config.options.abortTransactionOnError = config.options.abortTransactionOnError;
+    }
+
+    if (config.options.appName != undefined) {
+      _this.config.options.appName = config.options.appName;
+    }
+
+    if (config.options.camelCaseColumns != undefined) {
+      _this.config.options.camelCaseColumns = config.options.camelCaseColumns;
+    }
+
+    if (config.options.cancelTimeout != undefined) {
+      _this.config.options.cancelTimeout = config.options.cancelTimeout;
+    }
+
+    if (config.options.columnNameReplacer) {
+      if (typeof config.options.columnNameReplacer !== &#x27;function&#x27;) {
+        throw new TypeError(&#x27;options.columnNameReplacer must be a function or null.&#x27;);
+      }
+
+      _this.config.options.columnNameReplacer = config.options.columnNameReplacer;
+    }
+
+    if (config.options.connectTimeout) {
+      _this.config.options.connectTimeout = config.options.connectTimeout;
+    }
+
+    if (config.options.connectionIsolationLevel) {
+      _this.config.options.connectionIsolationLevel = config.options.connectionIsolationLevel;
+    }
+
+    if (config.options.cryptoCredentialsDetails) {
+      _this.config.options.cryptoCredentialsDetails = config.options.cryptoCredentialsDetails;
+    }
+
+    if (config.options.database != undefined) {
+      _this.config.options.database = config.options.database;
+    }
+
+    if (config.options.datefirst) {
+      if (config.options.datefirst &#x3c; 1 || config.options.datefirst &#x3e; 7) {
+        throw new RangeError(&#x27;DateFirst should be &#x3e;= 1 and &#x3c;= 7&#x27;);
+      }
+
+      _this.config.options.datefirst = config.options.datefirst;
+    }
+
+    if (config.options.debug) {
+      if (config.options.debug.data != undefined) {
+        _this.config.options.debug.data = config.options.debug.data;
+      }
+      if (config.options.debug.packet != undefined) {
+        _this.config.options.debug.packet = config.options.debug.packet;
+      }
+      if (config.options.debug.payload != undefined) {
+        _this.config.options.debug.payload = config.options.debug.payl ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.tedious.ConnectionError" id="apidoc.element.tedious.tedious.ConnectionError">
+        function <span class="apidocSignatureSpan">tedious.tedious.</span>ConnectionError
+        <span class="apidocSignatureSpan">(message, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ConnectionError(message, code) {
+  if (!(this instanceof ConnectionError)) {
+    if (message instanceof ConnectionError) {
+      return message;
+    }
+
+    return new ConnectionError(message, code);
+  }
+
+  Error.call(this);
+
+  this.message = message;
+  this.code = code;
+
+  Error.captureStackTrace(this, this.constructor);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.tedious.Request" id="apidoc.element.tedious.tedious.Request">
+        function <span class="apidocSignatureSpan">tedious.tedious.</span>Request
+        <span class="apidocSignatureSpan">(sqlTextOrProcedure, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Request(sqlTextOrProcedure, callback) {
+  (0, _classCallCheck3.default)(this, Request);
+
+  var _this = (0, _possibleConstructorReturn3.default)(this, (Request.__proto__ || (0, _getPrototypeOf2.default)(Request)).call(
+this));
+
+  _this.sqlTextOrProcedure = sqlTextOrProcedure;
+  _this.callback = callback;
+  _this.parameters = [];
+  _this.parametersByName = {};
+  _this.userCallback = _this.callback;
+  _this.callback = function () {
+    if (this.preparing) {
+      this.emit(&#x27;prepared&#x27;);
+      return this.preparing = false;
+    } else {
+      this.userCallback.apply(this, arguments);
+      return this.emit(&#x27;requestCompleted&#x27;);
+    }
+  };
+  return _this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tedious.tedious.RequestError" id="apidoc.element.tedious.tedious.RequestError">
+        function <span class="apidocSignatureSpan">tedious.tedious.</span>RequestError
+        <span class="apidocSignatureSpan">(message, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function RequestError(message, code) {
+  if (!(this instanceof RequestError)) {
+    if (message instanceof RequestError) {
+      return message;
+    }
+
+    return new RequestError(message, code);
+  }
+
+  Error.call(this);
+
+  this.message = message;
+  this.code = code;
+
+  Error.captureStackTrace(this, this.constructor);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
 
 
 </div>
